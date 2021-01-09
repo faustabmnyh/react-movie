@@ -1,0 +1,138 @@
+.banner {
+  width: fit-content;
+  margin: 0px auto;
+}
+.banner__container {
+  display: flex;
+  flex-direction: column;
+  /* height: 680px; */
+  background: white;
+  /* background: #011627; */
+  /* color: white; */
+  border-radius: 30px;
+  color: #011627;
+  box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.banner__top {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banner__descTop {
+  display: flex;
+  font-family: "quicksand";
+  align-items: center;
+}
+
+.banner__descTop h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.banner__descTop p {
+  font-size: 14px;
+}
+
+.banner__imageTop {
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 15px;
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.2);
+}
+
+.banner__action {
+  display: flex;
+}
+
+.banner__love:hover {
+  color: #004c75;
+  cursor: pointer;
+}
+
+.banner__chevron {
+  font-size: 20px !important;
+  width: 40px !important;
+}
+
+.banner__image {
+  border-radius: 30px 30px 0 0;
+  max-width: 1000px;
+  object-fit: contain;
+}
+
+.banner__description {
+  position: relative;
+}
+.banner__details {
+  display: flex;
+  width: 100%;
+  background: white;
+  padding: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 0 0 30px 30px;
+  font-family: "quicksand";
+}
+
+.banner__detailsMovie {
+  display: flex;
+  margin-left: 20px;
+  align-items: center;
+}
+
+.banner__detailsMovie li {
+  display: flex;
+  align-items: center;
+  font-family: "quicksand";
+  font-weight: bold;
+  margin-right: 30px;
+}
+
+.banner span {
+  display: flex;
+  font-size: 25px;
+  justify-content: center;
+  /* background: #14213d; */
+  color: #011627;
+  background: rgba(0, 0, 0, 0.06);
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  margin-right: 10px;
+  /* box-shadow: -2px -3px 7px rgba(255, 255, 255, 0.08),
+    0 5px 10px rgba(0, 0, 0, 0.3); */
+}
+
+.banner__description span {
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: white;
+  color: #011627;
+  position: absolute;
+  top: 50%;
+  border-radius: 25px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+.banner__description span:hover {
+  color: white;
+  background: #011627;
+  cursor: pointer;
+}
+.banner__description:hover > span {
+  display: flex;
+  opacity: 1;
+  transition: 0.3s;
+}

@@ -1,0 +1,24 @@
+.seasonDetails {
+  margin: -2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.seasonDetails__main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.seasonDetails__episodeImg {
+  position: absolute;
+  top: 0;
+}
+
+.seasonDetails__episodeImg img {
+  max-height: 200px;
+  object-fit: contain;
+}
