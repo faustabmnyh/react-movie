@@ -38,9 +38,9 @@ const Banner = ({ baseURLImage, truncate }) => {
           </div>
         </div>
         <div className="banner__action">
-          <span className="banner__love">
-            <i class="fa fa-heart" />
-          </span>
+          {/* <span className="banner__love">
+            <i class="fa fa-heart-o" />
+          </span> */}
           <Link to={`/movie/${movie.id}/media/${movie.media_type}`}>
             <span className="banner__chevron">
               <i class="fa fa-chevron-right" />

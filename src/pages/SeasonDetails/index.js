@@ -12,6 +12,7 @@ const SeasonDetails = () => {
   const [season, setSeason] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [selected, setSelected] = useState({});
   const fetchURL = `https://api.themoviedb.org/3/tv/${movieId}/season/${seasonNumber}?api_key`;
 
   useEffect(() => {
@@ -23,6 +24,7 @@ const SeasonDetails = () => {
       try {
         setLoading(false);
         setSeason(data);
+        setSelected(data.episodes[0]);
       } catch (err) {
         setLoading(false);
         setError(err.message);
@@ -30,7 +32,6 @@ const SeasonDetails = () => {
     };
     fetchMovie();
   }, [fetchURL]);
-  console.log("asd", season);
   return loading ? (
     <Loading />
   ) : error ? (
@@ -38,120 +39,59 @@ const SeasonDetails = () => {
   ) : (
     <div className="seasonDetails">
       <img
-        src={`${baseURLImage}${
-          season.episodes && season.episodes[0].still_path
-        }`}
+        src={`${baseURLImage}${selected.still_path}`}
         alt={season.name || season.title}
         className="seasonDetails__main"
       />
       <div className="blur"></div>
-      <div>
-        <ul className="seasonDetails__episodeImg">
-          {season.episodes?.map(
-            (episode) =>
-              episode.still_path && (
-                <img
-                  src={`${baseURLImage}${episode.still_path}`}
-                  alt={episode.name}
-                />
-              )
-          )}
-        </ul>
-        {/* <div className="seasonDetails__about">
-          <div>
-            <h1>{season.name || season.title}</h1>
+      <div className="seasonDetails__details">
+        <div className="seasonDetails__about">
+          <div className="seasonDetails__header">
+            <div className="seasonDetails__headerText">
+              <h1>{name}</h1>
+              <div className="seasonDetails__subText">{selected.name}</div>
+            </div>
+            {/* <div className="seasonDetails__love">
+              <span>
+                <i class="fa fa-heart-o" />
+              </span>
+            </div> */}
           </div>
+          <h3>{season.name}</h3>
           <div className="seasonDetails__info">
-            <div>
-              {season.release_date?.substr(0, 4) ||
-                season.first_air_date?.substr(0, 4)}
-            </div>
+            <div>{selected.air_date?.substr(0, 4)}</div>
             <hr />
-            <div>
-              <ul>
-                {season.spoken_languages?.map((s) => (
-                  <li key={s.name}>{s.name} </li>
-                ))}
-              </ul>
-            </div>
+            <div>Episode {selected.episode_number}</div>
             <hr />
             <div>
               <span>
                 <i class="fa fa-star" />
               </span>
-              {season.vote_average} ({season.vote_count})
-            </div>
-            <hr />
-            <div className="seasonDetails__timeTime">
-              <span>
-                <i class="fa fa-clock-o" />
-              </span>
-              {season.runtime ||
-                (season.episode_run_time && season.episode_run_time[0])}
-              m
+              {selected.vote_average} ({selected.vote_count})
             </div>
           </div>
-          <div className="seasonDetails__genre">
-            <span>
-              <i class="fa fa-television" />
-            </span>
-            <ul>
-              {season.genres?.map((genre) => (
-                <>
-                  <li key={genre.id}>{genre.name}</li>
-                </>
-              ))}
-            </ul>
-          </div>
-          <div className="seasonDetails__tagline">{season.tagline}</div>
-
-          <p>{season.overview}</p>
-          <button>
-            <a href={season.homepage} target="_blank" rel="noreferrer">
-              <span>
-                <i class="fa fa-arrow-right" />
-              </span>
-            </a>
-          </button>
-          <div className="seasonDetails__production">
-            <div>
-              Production Companies :
-              <ul className="seasonDetails__company">
-                {season.production_companies?.map((p, i) =>
-                  i === season.production_companies.length - 1 ? (
-                    <li key={p.id}>
-                      <h3>{p.name}.</h3>
-                    </li>
-                  ) : (
-                    <li key={p.id}>
-                      <h3>{p.name},</h3>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-            <div>
-              Director :
-              {season.created_by ? (
-                <ul className="seasonDetails__company">
-                  {season.created_by?.map((p, i) =>
-                    i === season.created_by.length - 1 ? (
-                      <li key={p.id}>
-                        <h3>{p.name}.</h3>
-                      </li>
-                    ) : (
-                      <li key={p.id}>
-                        <h3>{p.name},</h3>
-                      </li>
-                    )
-                  )}
-                </ul>
-              ) : (
-                " -"
-              )}
-            </div>
-          </div>
-        </div> */}
+          <p>{selected.overview}</p>
+          <button>Play</button>
+        </div>
+        <ul className="seasonDetails__episodeImg">
+          {season.episodes?.map(
+            (episode) =>
+              episode.still_path && (
+                <li key={episode.id}>
+                  <img
+                    onClick={() => setSelected(episode)}
+                    src={`${baseURLImage}${episode.still_path}`}
+                    alt={episode.name}
+                    className={
+                      selected.id === episode.id
+                        ? "seasonDetails__img active"
+                        : "seasonDetails__img"
+                    }
+                  />
+                </li>
+              )
+          )}
+        </ul>
       </div>
     </div>
   );

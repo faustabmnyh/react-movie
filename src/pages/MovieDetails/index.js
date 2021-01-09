@@ -51,33 +51,37 @@ const MovieDetails = () => {
         className="movieDetails__main"
       />
       <div className="blur"></div>
-      <div
-        className={
-          movie?.seasons?.length < 3
-            ? "movieDetails__details reverse"
-            : "movieDetails__details"
-        }
-      >
+      <div className={"movieDetails__details"}>
         {media === "tv" && (
           <ul className="movieDetails__season">
             {media === "tv" &&
               movie.seasons?.map((season) => (
-                <Link
-                  to={`/movie/${movie.id}/season/${season.season_number}/name/${movie.name}`}
-                >
-                  <img
-                    src={`${baseURLImage}${season.poster_path}`}
-                    alt={season.name}
-                    className="movieDetails__seasonImg"
-                  />
-                </Link>
+                <li>
+                  <Link
+                    to={`/movie/${movie.id}/season/${season.season_number}/name/${movie.name}`}
+                  >
+                    <img
+                      src={`${baseURLImage}${season.poster_path}`}
+                      alt={season.name}
+                      className="movieDetails__seasonImg"
+                    />
+                  </Link>
+                </li>
               ))}
           </ul>
         )}
         <div className="movieDetails__about">
-          <div>
-            <h1>{movie.name || movie.title}</h1>
+          <div className="movieDetails__header">
+            <div>
+              <h1>{movie.name || movie.title}</h1>
+            </div>
+            {/* <div className="movieDetails__love">
+              <span>
+                <i class="fa fa-heart-o" />
+              </span>
+            </div> */}
           </div>
+          <div className="movieDetails__tagline">{movie.tagline}</div>
           <div className="movieDetails__info">
             <div>
               {movie.release_date?.substr(0, 4) ||
@@ -109,9 +113,9 @@ const MovieDetails = () => {
             </div>
           </div>
           <div className="movieDetails__genre">
-            <span>
+            {/* <span>
               <i class="fa fa-television" />
-            </span>
+            </span> */}
             <ul>
               {movie.genres?.map((genre) => (
                 <>
@@ -120,7 +124,6 @@ const MovieDetails = () => {
               ))}
             </ul>
           </div>
-          <div className="movieDetails__tagline">{movie.tagline}</div>
 
           <p>{movie.overview}</p>
           <button>
@@ -150,7 +153,7 @@ const MovieDetails = () => {
             </div>
             <div>
               Director :
-              {movie.created_by ? (
+              {movie.created_by && movie.created_by > 0 ? (
                 <ul className="movieDetails__company">
                   {movie.created_by?.map((p, i) =>
                     i === movie.created_by.length - 1 ? (

@@ -71,9 +71,9 @@ const Home = () => {
                 <Link to={`/movie/${movie.id}}`}>
                   <h3>{movie.name || movie.title}</h3>
                 </Link>
-                <span>
-                  <i class="fa fa-heart" />
-                </span>
+                {/* <span>
+                  <i class="fa fa-heart-o" />
+                </span> */}
               </div>
               <div className="home__footerDate">
                 {movie.release_date.substr(0, 4) || movie.first_air_date}

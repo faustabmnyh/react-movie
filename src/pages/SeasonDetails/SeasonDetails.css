@@ -13,12 +13,165 @@
   height: 100vh;
 }
 
-.seasonDetails__episodeImg {
+.seasonDetails__details {
   position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-5%);
+  display: flex;
+  color: white;
   top: 0;
+  padding: 2rem;
+  margin-top: 20px;
+  font-family: "rubik";
+  z-index: 10;
+  justify-content: space-between;
+}
+.seasonDetails__about {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  margin-top: 100px;
 }
 
-.seasonDetails__episodeImg img {
-  max-height: 200px;
+.seasonDetails__about p {
+  font-size: 16px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.seasonDetails__about button {
+  width: 120px;
+  height: 35px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "quicksand";
+  border-radius: 5px;
+}
+
+.seasonDetails__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seasonDetails__love {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.247);
+}
+
+.seasonDetails__love span {
+  color: #011627;
+  font-size: 25px;
+}
+
+.seasonDetails__headerText {
+  display: flex;
+  align-items: center;
+}
+
+.seasonDetails__headerText h1 {
+  border-right: 1px solid rgb(170, 170, 170);
+  padding-right: 10px;
+  font-size: 28px;
+}
+
+.seasonDetails__subText {
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.seasonDetails__about h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.seasonDetails__info span {
+  color: #ff7716;
+  margin-right: 5px;
+}
+.seasonDetails__info {
+  display: flex;
+  font-size: 14px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  color: rgb(197, 197, 197);
+}
+
+.seasonDetails__about button:hover {
+  background: #011627;
+  color: #ff7716;
+  transition: 0.2s;
+}
+
+.seasonDetails__episodeImg {
+  width: 100%;
+  overflow-x: auto;
+  position: absolute;
+  bottom: 10px;
+  margin: 2rem;
+  display: flex;
+  z-index: 2;
+  padding: 2rem 0;
+  padding-left: 5rem;
+  margin-left: -2rem;
+}
+
+.seasonDetails__episodeImg li:last-of-type {
+  padding-right: 10rem;
+}
+
+.seasonDetails__episodeImg::-webkit-scrollbar {
+  display: none;
+}
+
+.seasonDetails__img {
+  max-height: 150px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   object-fit: contain;
+  opacity: 0.5;
+  margin-right: 10px;
+}
+
+.seasonDetails__img:hover {
+  position: relative;
+  transform: scale(1.11);
+  opacity: 1;
+  transition: 0.25s;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+.seasonDetails__img.active {
+  position: relative;
+  transform: scale(1.11);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  z-index: 100;
+}
+
+.seasonDetails__img.active:hover {
+  box-sizing: border-box;
+}
+
+@keyframes transition {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

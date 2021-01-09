@@ -29,20 +29,13 @@
 }
 
 .movieDetails__details h1 {
-  font-size: 30px;
-  margin-bottom: 10px;
+  font-size: 35px;
 }
 
 .movieDetails__details p {
-  font-size: 14px !important;
+  font-size: 16px;
   margin: 10px 0;
   width: 450px !important;
-}
-
-.movieDetails__details.tv p {
-  font-size: 16px;
-  width: 100%;
-  margin: 10px 0;
 }
 
 .movieDetails__about {
@@ -54,8 +47,6 @@
 .movieDetails__info {
   display: flex;
   font-size: 14px;
-  margin-top: 3px;
-  margin-bottom: 10px;
   color: rgb(197, 197, 197);
 }
 
@@ -73,10 +64,9 @@
   flex-wrap: wrap;
 }
 .movieDetails__genre li {
-  font-size: 12px;
+  font-size: 14px;
   margin-right: 5px;
-  color: white;
-  text-transform: uppercase;
+  color: rgb(197, 197, 197);
 }
 
 .movieDetails__time {
@@ -99,8 +89,30 @@
   margin-right: 10px;
 }
 
+.movieDetails__love {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.movieDetails__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movieDetails__love span {
+  color: #011627;
+  font-size: 25px;
+  margin-left: 5px;
+}
 .movieDetails__production > div {
   margin-top: 20px;
+  font-size: 14px;
 }
 
 .movieDetails__company {
@@ -111,7 +123,7 @@
 }
 
 .movieDetails__company li h3 {
-  font-size: 16px;
+  font-size: 14px;
   margin-right: 10px;
   font-weight: 400;
   color: rgb(192, 192, 192);
@@ -119,7 +131,7 @@
 
 .movieDetails__tagline {
   font-size: 20px;
-  margin-bottom: 10px;
+  font-weight: 500;
   color: #ff7716;
 }
 .movieDetails__imagePoster {
@@ -129,13 +141,13 @@
 
 .movieDetails__details button {
   width: 140px;
-  height: 40px;
+  height: 35px;
   font-family: "quicksand";
-  margin-top: 20px;
+  margin-top: 10px;
   font-weight: bold;
   background: transparent;
   outline: none;
-  font-size: 16px;
+  font-size: 14px;
   border: 2px solid white;
   border-radius: 20px;
   transition: 0.3s;
@@ -156,12 +168,9 @@
 .movieDetails__details button:hover a {
   color: #ff7716;
 }
-.movieDetails__details.reverse {
-  flex-direction: row-reverse;
-}
 
 .movieDetails__season {
-  width: fit-content;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -173,7 +182,7 @@
 }
 
 .movieDetails__season li {
-  width: fit-content;
+  width: 100%;
 }
 
 .movieDetails__season::-webkit-scrollbar {
