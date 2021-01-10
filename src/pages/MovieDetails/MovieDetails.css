@@ -15,7 +15,7 @@
 
 .movieDetails__details {
   position: absolute;
-  width: 50%;
+  width: 60%;
   height: 100%;
   transform: translateY(-5%);
   align-items: center;
@@ -35,7 +35,7 @@
 .movieDetails__details p {
   font-size: 16px;
   margin: 10px 0;
-  width: 450px !important;
+  width: 600px !important;
 }
 
 .movieDetails__about {
@@ -89,27 +89,11 @@
   margin-right: 10px;
 }
 
-.movieDetails__love {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 10px;
-  backdrop-filter: blur(30px);
-  background: rgba(255, 255, 255, 0.2);
-}
-
 .movieDetails__header {
   display: flex;
   justify-content: space-between;
 }
 
-.movieDetails__love span {
-  color: #011627;
-  font-size: 25px;
-  margin-left: 5px;
-}
 .movieDetails__production > div {
   margin-top: 20px;
   font-size: 14px;
@@ -134,12 +118,19 @@
   font-weight: 500;
   color: #ff7716;
 }
+
+.movieDetails__language {
+  display: flex;
+}
+.movieDetails__language li {
+  margin-right: 10px;
+}
 .movieDetails__imagePoster {
   max-width: 200px;
   object-fit: contain !important;
 }
 
-.movieDetails__details button {
+.movieDetails__see {
   width: 140px;
   height: 35px;
   font-family: "quicksand";
@@ -152,21 +143,43 @@
   border-radius: 20px;
   transition: 0.3s;
 }
-.movieDetails__details button a {
+.movieDetails__see a {
   color: white;
 }
 
-.movieDetails__details button span {
+.movieDetails__see span {
   margin-left: 10px;
 }
 
-.movieDetails__details button:hover {
+.movieDetails__see:hover {
   border: 2px solid #011627;
   background: #011627;
+  box-shadow: 0px 10px 20px rgba(1, 22, 39, 0.2);
   cursor: pointer;
 }
-.movieDetails__details button:hover a {
+.movieDetails__see:hover a {
   color: #ff7716;
+}
+
+.movieDetails__btn {
+  display: flex;
+}
+
+.movieDetails__play {
+  background: #011627;
+  margin-right: 20px;
+  color: #ff7716;
+  width: 140px;
+  height: 35px;
+  font-family: "quicksand";
+  margin-top: 10px;
+  font-weight: bold;
+  outline: none;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(1, 22, 39, 0.2);
+  border: 2px solid #011627;
 }
 
 .movieDetails__season {
@@ -175,10 +188,14 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  margin-top: 50px;
+  margin-top: 10rem;
   margin-left: -10px;
   margin-right: 15px;
-  padding: 10rem 10px;
+  padding: 3rem 10px;
+}
+
+.movieDetails__season li:last-of-type {
+  padding-bottom: 7rem;
 }
 
 .movieDetails__season li {

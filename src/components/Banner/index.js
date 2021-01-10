@@ -17,7 +17,6 @@ const Banner = ({ baseURLImage, truncate }) => {
     }
     fetchData();
   }, [fetchURL]);
-  console.log("asdasd", movie);
 
   return (
     <div className="banner">
@@ -38,9 +37,6 @@ const Banner = ({ baseURLImage, truncate }) => {
           </div>
         </div>
         <div className="banner__action">
-          {/* <span className="banner__love">
-            <i class="fa fa-heart-o" />
-          </span> */}
           <Link to={`/movie/${movie.id}/media/${movie.media_type}`}>
             <span className="banner__chevron">
               <i class="fa fa-chevron-right" />
@@ -59,7 +55,6 @@ const Banner = ({ baseURLImage, truncate }) => {
             <i class="fa fa-play" />
           </span>
         </div>
-
         <div className="banner__details">
           <ul className="banner__detailsMovie">
             <li>

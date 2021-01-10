@@ -1,38 +1,33 @@
 import axios from "axios";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import Message from "../../components/Message";
-import {
-  MOVIE_DETAILS_FAIL,
-  MOVIE_DETAILS_REQUEST,
-  MOVIE_DETAILS_SUCCESS,
-} from "../../constants/movieConstants";
-import { useMovieDisptach, useMovieState } from "../../context/movieContext";
+import Player from "../../components/Player";
 import "./MovieDetails.css";
 
 const baseURLImage = "https://image.tmdb.org/t/p/original/";
 
 const MovieDetails = () => {
   let { movieId, media } = useParams();
-  const { loading, error, movie } = useMovieState();
-  const dispatch = useMovieDisptach();
+  const [movie, setMovie] = useState({});
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const fetchURL = `https://api.themoviedb.org/3/${
     media === "tv" ? "tv" : "movie"
   }/${movieId}?api_key`;
   const fetchMovie = useRef(() => {});
   fetchMovie.current = async () => {
-    dispatch({ type: MOVIE_DETAILS_REQUEST });
+    setLoading(true);
     const { data } = await axios.get(
       `${fetchURL}=${process.env.REACT_APP_TDMB_API}&with_genres=14`
     );
     try {
-      dispatch({ type: MOVIE_DETAILS_SUCCESS, payload: data });
+      setLoading(false);
+      setMovie(data);
     } catch (err) {
-      dispatch({
-        type: MOVIE_DETAILS_FAIL,
-        payload: err.message,
-      });
+      setLoading(false);
+      setError(err.message);
     }
   };
   useEffect(() => {
@@ -46,7 +41,9 @@ const MovieDetails = () => {
   ) : (
     <div className="movieDetails">
       <img
-        src={`${baseURLImage}${movie.backdrop_path}`}
+        src={`${baseURLImage}${
+          movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+        }`}
         alt={movie.name || movie.title}
         className="movieDetails__main"
       />
@@ -55,19 +52,22 @@ const MovieDetails = () => {
         {media === "tv" && (
           <ul className="movieDetails__season">
             {media === "tv" &&
-              movie.seasons?.map((season) => (
-                <li>
-                  <Link
-                    to={`/movie/${movie.id}/season/${season.season_number}/name/${movie.name}`}
-                  >
-                    <img
-                      src={`${baseURLImage}${season.poster_path}`}
-                      alt={season.name}
-                      className="movieDetails__seasonImg"
-                    />
-                  </Link>
-                </li>
-              ))}
+              movie.seasons?.map(
+                (season) =>
+                  season.poster_path && (
+                    <li>
+                      <Link
+                        to={`/movie/${movie.id}/season/${season.season_number}/name/${movie.name}`}
+                      >
+                        <img
+                          src={`${baseURLImage}${season.poster_path}`}
+                          alt={season.name}
+                          className="movieDetails__seasonImg"
+                        />
+                      </Link>
+                    </li>
+                  )
+              )}
           </ul>
         )}
         <div className="movieDetails__about">
@@ -75,11 +75,6 @@ const MovieDetails = () => {
             <div>
               <h1>{movie.name || movie.title}</h1>
             </div>
-            {/* <div className="movieDetails__love">
-              <span>
-                <i class="fa fa-heart-o" />
-              </span>
-            </div> */}
           </div>
           <div className="movieDetails__tagline">{movie.tagline}</div>
           <div className="movieDetails__info">
@@ -89,7 +84,7 @@ const MovieDetails = () => {
             </div>
             <hr />
             <div>
-              <ul>
+              <ul className="movieDetails__language">
                 {movie.spoken_languages?.map((s) => (
                   <li key={s.name}>{s.name} </li>
                 ))}
@@ -113,9 +108,6 @@ const MovieDetails = () => {
             </div>
           </div>
           <div className="movieDetails__genre">
-            {/* <span>
-              <i class="fa fa-television" />
-            </span> */}
             <ul>
               {movie.genres?.map((genre) => (
                 <>
@@ -126,14 +118,17 @@ const MovieDetails = () => {
           </div>
 
           <p>{movie.overview}</p>
-          <button>
-            <a href={movie.homepage} target="_blank" rel="noreferrer">
-              {media === "tv" ? "See TV" : "See Movie"}
-              <span>
-                <i class="fa fa-arrow-right" />
-              </span>
-            </a>
-          </button>
+          <div className="movieDetails__btn">
+            {media !== "tv" ? <Player /> : null}
+            <button className="movieDetails__see">
+              <a href={movie.homepage} target="_blank" rel="noreferrer">
+                {media === "tv" ? "See TV" : "See Movie"}
+                <span>
+                  <i class="fa fa-arrow-right" />
+                </span>
+              </a>
+            </button>
+          </div>
           <div className="movieDetails__production">
             <div>
               Production Companies :

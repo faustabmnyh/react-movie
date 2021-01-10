@@ -5,12 +5,43 @@
 
 body {
   margin: 0;
-  padding: 2rem;
+  /* padding: 2rem; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.grid__container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 3rem 1fr 5rem;
+  height: 100%;
+}
+
+header {
+  position: relative;
+  grid-area: header;
+  color: black;
+}
+
+main {
+  grid-area: main;
+  padding: 2rem;
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin-top: 50px;
 }
 
 ul {
@@ -30,6 +61,10 @@ a:hover {
   color: #004c75;
 }
 
+.active {
+  font-weight: bolder;
+}
+
 .blur {
   position: absolute;
   width: 100%;
@@ -39,4 +74,37 @@ a:hover {
   filter: blur(20px);
   z-index: 1;
   background: rgba(0, 0, 0, 0.4);
+}
+
+.success {
+  color: #20a020;
+}
+.danger {
+  color: #a02020;
+}
+
+.alert {
+  margin-top: 5px;
+  padding: 10px;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+}
+
+.alert__info {
+  color: #2020a0;
+  background: #c7c7ff;
+}
+
+.alert__danger {
+  margin-top: 5px;
+  color: #a02020;
+  background: #ffe0e0e0;
+  padding: 10px;
+}
+
+.alert__success {
+  margin-top: 5px;
+  padding: 10px;
+  color: #20a020;
+  background: #eeffe0;
 }

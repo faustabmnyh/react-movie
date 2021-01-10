@@ -1,6 +1,7 @@
 .banner {
   width: fit-content;
   margin: 0px auto;
+  margin-top: 50px;
 }
 .banner__container {
   display: flex;

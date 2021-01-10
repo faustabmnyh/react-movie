@@ -48,30 +48,16 @@
   border: none;
   cursor: pointer;
   font-weight: bold;
+  background: white;
   font-family: "quicksand";
   border-radius: 5px;
+  box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.3);
 }
 
 .seasonDetails__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.seasonDetails__love {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 10px;
-  backdrop-filter: blur(30px);
-  background: rgba(255, 255, 255, 0.247);
-}
-
-.seasonDetails__love span {
-  color: #011627;
-  font-size: 25px;
 }
 
 .seasonDetails__headerText {
@@ -112,6 +98,7 @@
   background: #011627;
   color: #ff7716;
   transition: 0.2s;
+  box-shadow: 0px 10px 20px rgba(1, 22, 39, 0.3);
 }
 
 .seasonDetails__episodeImg {
@@ -165,13 +152,4 @@
 
 .seasonDetails__img.active:hover {
   box-sizing: border-box;
-}
-
-@keyframes transition {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }

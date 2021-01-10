@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import Message from "../../components/Message";
+import Player from "../../components/Player";
 import "./SeasonDetails.css";
 
 const baseURLImage = "https://image.tmdb.org/t/p/original/";
@@ -51,11 +52,6 @@ const SeasonDetails = () => {
               <h1>{name}</h1>
               <div className="seasonDetails__subText">{selected.name}</div>
             </div>
-            {/* <div className="seasonDetails__love">
-              <span>
-                <i class="fa fa-heart-o" />
-              </span>
-            </div> */}
           </div>
           <h3>{season.name}</h3>
           <div className="seasonDetails__info">
@@ -71,7 +67,7 @@ const SeasonDetails = () => {
             </div>
           </div>
           <p>{selected.overview}</p>
-          <button>Play</button>
+          <Player />
         </div>
         <ul className="seasonDetails__episodeImg">
           {season.episodes?.map(
