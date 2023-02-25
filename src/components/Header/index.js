@@ -23,7 +23,7 @@ const Header = () => {
     e.preventDefault();
     history.push(`/search/${searchName.trim() === "" ? "all" : searchName}`);
   };
-
+ 
   const handleCategory = (c) => {
     setCategory(c);
     history.push(`/category/${c}`);

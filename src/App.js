@@ -9,7 +9,7 @@ import CategoryPage from "./pages/CategoryPage";
 function App() {
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
       <main>
         <Route exact path="/" component={Home} />
         <Route exact path="/movie/:movieId" component={MovieDetails} />

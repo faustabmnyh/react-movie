@@ -117,7 +117,7 @@ const MovieDetails = () => {
             </ul>
           </div>
 
-          <p>{movie.overview}</p>
+          <p className="movieDetails__overview">{movie.overview}</p>
           <div className="movieDetails__btn">
             {media !== "tv" ? <Player /> : null}
             <button className="movieDetails__see">

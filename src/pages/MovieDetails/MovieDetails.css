@@ -33,8 +33,9 @@
 }
 
 .movieDetails__details p {
-  font-size: 16px;
+  font-size: 15px;
   margin: 10px 0;
+  
   width: 600px !important;
 }
 
@@ -224,3 +225,7 @@
   opacity: 1;
   z-index: 100;
 }
+
+/* .movieDetails__overview {
+  font-size: 14px;
+} */
